@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Project Management App</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <link rel="stylesheet" href="{% static 'projects/style.css' %}">
+
+    <h1>In Progress Projects</h1>
+
+    <div>
+        {% if projects %}
+        <ul>
+            {% for project in projects %}
+            <li><a href="{% url 'projects:detail' project.id %}">{{ project.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> No projects are available.</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

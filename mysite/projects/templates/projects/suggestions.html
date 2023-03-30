@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Project Management App</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <h1>{{ project.name }}</h1>
+
+    <h2>Recommendations</h2>
+
+    <div>
+        {% if recommendations %}
+        <h3>{{ recommendations_count }} Potential Issues</h3>
+        <ul>
+            {% for recommendation in recommendations %}
+            <li>
+                <h3>Issue: {{ recommendation.name }}</h3>
+                <p>Solution: {{ recommendation.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> No recommendations are available.</p>
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>

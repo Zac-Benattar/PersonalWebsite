@@ -1,0 +1,844 @@
+
+
+* {
+    box-sizing: border-box;
+    
+}
+
+body {
+    margin: 0;
+    
+    background-repeat: no-repeat;
+}
+
+
+.nav{
+    background:white;
+    width: 100%;
+    padding-top:1%;
+    padding-bottom: 1%;
+    font-size: 20px;
+    color: #9c00fd;
+    display: flex;
+    width: 100%;
+    position: fixed;
+    justify-content: center;
+}
+
+
+.home-nav{
+    overflow: hidden;
+    border-bottom: solid white;
+    padding-top: 20px;
+    color: white;
+    display: flex;
+    width: 100%;
+    z-index: 2;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    background-color: white;
+}
+.home-nav-menu{
+    width:30%;
+    float: right;
+    margin-right: 15%;
+}
+.user-title{
+    width: 20%;
+    margin-left:15%;
+    padding: 1%;
+    color:#9c00fd;
+    float: left;
+    margin-top: -10px;
+    border: solid #9c00fd;
+    border-radius: 10px;;
+    font-size:25px;
+}
+
+.user-title:hover, title:hover {
+    background-color: #9c00fd;
+    color: white;
+}
+
+.home-nav ul{
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+.home-nav a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.home-nav-menu li{
+    border-radius: 10px;
+    width:30%;
+    margin:0 10%;
+    padding: 10px 20px;
+    cursor:pointer;
+    transition: all 0.15s ease-in;
+    color: #9c00fd;
+    font-size: 25px;
+}
+
+.home-nav-menu>ul>li:hover{
+    background-color:#9c00fd;
+    color:white;
+}
+.logout{
+    margin-left:100px;
+    color:white;
+    background-color: rgb(65, 206, 245) ;
+    border-radius: 20px;
+    padding: 0px 20px;
+}
+
+.nav ul, ul {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+
+.nav a {
+    color: inherit;
+    text-decoration: none;
+    display: inline;
+    padding: 1rem;
+    font-size: 25px;
+}
+
+.nav li{
+    border-radius: 10px;
+    padding: 5px 5px;
+    cursor:pointer;
+    transition: all 0.15s ease-in;
+    color: #9c00fd;
+    font-size: 25px;
+}
+
+
+.nav li:hover{
+    background-color: rgb(138, 73, 202);
+    color: white;    
+}
+
+.home-page, .projects-home-page{
+    background-image: linear-gradient(40deg, rgb(65, 206, 245), #9c00fd);
+    position: absolute;
+    top:0;
+    width:100%;
+    display: block;
+    padding-bottom: 10%;
+}
+
+.projects-page-content {
+    padding-top: 7%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.home-page-content{
+    width: 80%;
+    margin-left: 10%;
+}
+
+.home-page-menu, .task-page-menu{
+    width: 100%;
+    margin-top: 60px;
+}
+
+.home-page-menu{
+  text-align: left;
+  display: block;
+}
+
+.home-page-menu>button{
+  left:0;
+  margin-left: 3%;
+}
+
+.home-page-menu>button , .task-page-menu>button{
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    color:#9c00fd;
+    cursor: pointer;
+    display: inline-block;
+    width:10%;
+}
+.home-page-menu>button:hover,
+.task.page.menu>button:hover{
+    opacity: 70%;
+}
+.all_projects{
+    margin-top: 100px;
+    width:100%;
+    display: block;
+}
+.projects-list{
+    display: block;
+    width:100%;
+}
+.project_container{
+    border:solid 4px;
+    border-color: rgb(232, 232, 232);
+    background-color:  rgb(232, 232, 232);
+    width:28%;
+    align-items: left;
+    margin: 2.5% 2.5%;
+    border-radius: 10px;
+    float: left;
+}
+
+.project_container:hover {
+    background-color: white;
+    cursor: pointer;
+}
+
+.title{
+    display: inline-block;
+    width:95%;
+    border: solid 2px;
+    border-radius: 10px;
+    margin:2.5%;
+    text-align: center;
+    color: rgb(138, 73, 202);
+    text-decoration: none;
+}
+
+
+.info{
+    display:inline-block;
+    width:100%;
+    margin:10px 0;
+}
+
+.info>h3, .info>p{
+    display: inline;
+}
+
+.project-description>h3, .project-description>p {
+    display: inline;
+}
+
+.info>h3{
+    color: rgb(138, 73, 202);
+}
+
+
+.info_container{
+    width: 100%;
+    text-align: left;
+    margin-left: 10%;
+}
+
+.progress-bar {
+    display: inline-block;
+    width:90%;
+}
+
+.top-of-page {
+    width:20%;
+    display: block;
+}
+
+
+
+.user-profile {
+    display: inline-block;
+    text-align: center; 
+}
+
+
+
+.user-info {
+    color: white;
+    font-size: 20;
+}
+
+.calander-container {
+    margin-left: 10%;
+}
+
+.people-container, .suggestions-container{
+    background-color: white;
+    border-radius: 30px;
+    padding: 2%;
+    margin: 2%;
+    width: 30%;
+    display: inline-block;
+}
+
+
+
+.all-containers {
+    display: block;
+    width: 80%;
+    margin: 10%;
+}
+
+.skill {
+    display: inline-block;
+    padding: 2%;
+    text-indent: none;
+    border-radius: 30px;
+    background-color: rgb(188, 188, 255);
+    margin: 0.5%;
+}
+
+.all-skills, .all-suggestions {
+    list-style: none;
+    padding-left:0;
+    display: block;
+    width:100%;
+}
+
+.project-info-container {
+    display: inline-block;
+    width: 60%;
+    background-color:  rgb(247, 247, 247);
+    padding: 3%;
+    border-radius: 30px;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-left:1%;
+}
+
+.project-name {
+    color: rgb(138, 73, 202);
+    margin-top:-2%;
+    padding: 2%;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.project-description{
+    padding: 2.5%;
+    margin-top: -4%;
+    text-align: left;
+}
+
+
+
+.des-title {
+    color: rgb(138, 73, 202); 
+}
+
+.des {
+    color: rgb(0, 0, 0);
+}
+
+
+.proj-button, .create-project-btn, .member-button, .task-button {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, rgb(65, 206, 245) 50%, rgb(65, 206, 245) 50%, #9c00fd);
+    background-size: 200%;
+    background-position: 100%;
+    transition: 0.4s;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+  }
+
+  .task-button{
+    width:30%;
+    float:right;
+    margin-bottom: 3%;
+  }
+
+  .sug-title {
+    color:red;
+    font-size:20px;
+  }
+
+
+
+
+  .add-skill-btn {
+    border-radius: 8px;
+    background-image: linear-gradient(to right, rgb(255, 255, 255) 50%, rgb(255, 255, 255) 50%, rgb(153, 153, 153));
+    background-size: 200%;
+    background-position: 100%;
+    transition: 0.4s;
+    color: #9c00fd;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    width:30%;
+    margin-top: 7%;
+  }
+
+  .proj-button {
+    width: 20%;
+    margin: 2%;
+    float:right;
+  }
+
+  .create-project-btn {
+    display: block;
+    padding:2%;
+    width:30%;
+}
+
+  .member-button{
+    display: inline;
+    padding:3%;
+    width:30%;
+    margin:2%;
+  }
+
+  .project-buttons{
+    width: 100%;
+  }
+
+
+
+
+  .proj-button:hover, 
+  .create-project-btn:hover,
+  .member-button:hover,
+  .add-skill-btn:hover,
+  .task-button:hover{
+  background-position: 0%;
+}
+
+.risk-info-container{
+    display: inline-block;
+    width: 20%;
+    margin:2%;   
+}
+
+
+.project-risk-score {
+    display: block;
+    width:100%;
+    background-color:  rgb(232, 160, 160);
+    border-radius: 30px;
+    margin-bottom: 60%;
+}
+
+.risk-percentage{
+    font-size: 20px;
+    font-weight: 0;
+    padding: 3%;
+}
+
+
+.new-role-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    border: none;
+    z-index: 1; /* Sit on top */
+    top: 0;
+    width: 100%; /* Full width */
+    height:100%;
+    /* Full height */
+    overflow: auto;/* Enable scroll if needed */
+    backdrop-filter: blur(5px);
+}
+
+.create-project-modal, .edit-modal{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    border: none;
+    z-index: 1; /* Sit on top */
+    top: 0;
+    width: 100%; /* Full width */
+    height:100%;
+    padding:30px;
+    /* Full height */
+    overflow: auto;/* Enable scroll if needed */
+    backdrop-filter: brightness(15%);
+}
+
+.edit-task-modal{
+  display: none; /* Hidden by default */
+    border: none;
+    z-index: 1; /* Sit on top */
+    top: 0;
+    width:100%;
+    height:100%;
+    /* Full height */
+    overflow: auto;/* Enable scroll if needed */
+    
+}
+
+
+.skillset-modal {
+    background-color:  #9c00fd;
+    border-radius: 30px;
+    display:none;
+    position: fixed; /* Stay in place */
+    border: none;
+    z-index: 1; /* Sit on top */
+    top: 0;
+    width:40%;
+    height:50%;
+    /* Full height */
+    overflow: auto;/* Enable scroll if needed */
+    backdrop-filter: blur;
+    margin-top:10%;
+}
+
+
+  .create-project-content, .edit-modal-content {
+    background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(233, 233, 233) 50%, rgb(209, 209, 209));
+    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 60px;
+    background-position: center;
+    background-size: cover;
+    width: 60%;
+    margin-left:20%; /* 15% from the top and centered */
+    padding:30px;
+    border-radius: 20px;
+    color: black;
+  }
+
+  .create-project-content>h1, .edit-modal-content>h1{
+    color:transparent;
+    background-image: linear-gradient(40deg, rgb(65, 206, 245), #9c00fd);
+    background-clip: text;
+    font-size: 50px;
+    padding:20px;
+  }
+
+  .create-project-div, .edit-project-div{
+    width:100%;
+    display:block;
+    text-align: left;
+    padding: 0 10%;
+    margin: 20px 0;
+  }
+  .create-project-label, .edit-project-label{
+    color:transparent;
+    background-image: linear-gradient(40deg, rgb(65, 206, 245), #9c00fd);
+    background-clip: text;
+    font-size: 25px;
+    width:50%;
+    vertical-align: top;
+    display: inline-block;
+  }
+
+  .create-project-input{
+    display: inline-block;    
+    width:50%;
+  }
+
+  .input-bar{
+    width:100%;
+    border:solid 1px #9c00fd3a;
+    background-color: transparent;
+    color:#9c00fd;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  .input-bar::placeholder, .text-area-bar::placeholder{
+    color:#9c00fd
+  }
+  .text-area-bar{
+    width:100%;
+    border:solid 1px #9c00fd3a;
+    background-color: transparent;
+    color:#9c00fd;
+    resize: none;
+    padding:15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+
+  .skillset-modal-content {
+
+    background-color:  #9c00fd;
+    background-position: center;
+    background-size: cover;
+    
+    width: 100%;
+    border-radius: 20px;
+    color: white;
+    font-size: 10px;
+    font-weight: 100;
+
+    margin-top: 12%;
+
+  }
+
+
+  .role-modal-content {
+    background-color:  rgb(138, 73, 202);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: 60px;
+    width: 80%;
+    margin-left:10%; /* 15% from the top and centered */
+    padding: 3%;
+    border-radius: 20px;
+    color: black;
+
+  }
+
+
+  .modal-content>h1{
+    font-size:30;
+    color:rgb(138, 73, 202);
+    text-align: center;
+    padding:2%;
+  }
+  .input-labels{
+    display: inline-block;
+    margin-left: 10%;
+    color:rgb(138, 73, 202);
+    font-size: 20px;
+  }
+
+  .role-input-labels, .skill-input-labels{
+    
+    margin-left: 10%;
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+    font-weight:400;
+  }
+
+  .role-input-labels {
+    display: flex;
+  }
+
+  .skill-input-labels{
+    display: inline-block;
+  }
+  
+  .project-inputs, .skill-inputs{
+    display: inline-block;
+    margin-left:10%;
+    
+  }
+
+  .input-div{
+    text-align: left;
+    padding:5px;
+    width:100%;
+  }
+
+  .skill-input-div{
+    display: block;
+  }
+  
+
+  .close {
+    color: black;
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: -1%;
+    margin-right: 0%;
+    cursor: pointer;
+    color:rgb(138, 73, 202);
+  }
+
+
+  .skill-close  {
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-right:5%;
+    cursor: pointer;
+    color:rgb(255, 255, 255);
+  }
+
+.add-proj-drop {
+    color: black;
+    font-size: 30px;
+}
+
+
+.role-close {
+    color: black;
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: -1%;
+    margin-right: 0%;
+    cursor: pointer;
+    color:rgb(255, 255, 255);
+  }
+
+
+ .delete-proj-btn, .delete-people-btn {
+    cursor: pointer;
+    font-size: 25px;
+    float: right;
+    margin-right: 5%;
+    color:red;
+ }
+
+ .delete-people-btn {
+    font-size:20px;
+ }
+
+
+ .delete-proj-btn {
+    font-size: 25px;
+ }
+
+.user-profile-content{
+
+    background-color: white;
+    border-radius: 30px;
+    padding: 2%;
+    margin: 2%;
+    width: 50%;
+    
+    display: inline-block;
+
+}
+
+
+.prof-title{
+    display:inline-block;
+}
+.prof-text{
+    display: inline-block;
+}
+
+
+.user-icon{
+
+    width:35%;
+    height:120px;
+    font-size:4em;
+   
+    border: solid 2px;
+    
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding:5%;
+    margin-left:32%
+}
+
+
+.menu-button{
+    padding: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    color:#9c00fd;
+    cursor: pointer;
+    left:0;
+    display: inline-block;
+    margin-left: 3%;
+    width:10%;
+
+}
+
+.menu-dropdown {
+    display:none;
+    position: absolute;
+    z-index:1;
+}
+
+
+.menu-dropdown>button:hover{
+    background-color: #9c00fd;
+    color:white;
+}
+
+.user-menu {
+    width: 100%;
+    display: block;
+    margin-top: 60px;
+    text-align: left;
+}
+
+.user-menu:hover .menu-dropdown {
+    display: block;
+}
+
+
+
+
+
+.edit-btn {
+    border: none;
+    background-color: white;
+    color:#9c00fd;
+    cursor: pointer;
+    left:0;
+    display: block;
+    margin-left: 3%;
+    width:100%;
+}
+
+
+
+.suggestion_container {
+    display: inline-block;
+    padding: 50px;
+    text-indent: none;
+    border: solid 1px rgb(188, 188, 255);
+    border-radius: 30px;
+    background-color: rgb(188, 188, 255);
+    margin: 12px;
+    width:30%;
+  }
+
+  .mainbody_container {
+    display: block;
+    padding: 50px;
+    text-indent: none;
+    border: solid 1px rgb(188, 188, 255);
+    border-radius: 30px;
+    background-color: rgb(188, 188, 255);
+    margin: 30px;
+    width:90%;
+  }
+  
+  .addTaskField_container {
+    padding: 2px;
+    text-indent: none;
+    margin: 3px;
+    text-align: left;
+  }
+  
+  .addTask_container {
+    display: inline-block;
+    padding: 30px;
+    text-indent: none;
+    border: solid 1px rgb(173, 173, 243);
+    border-radius: 20px;
+    background-color: rgb(245, 241, 247);
+    margin: 30px;
+    text-align: left;
+    overflow-y: scroll;
+    max-height: 90%;
+  }
+
+
+  .calander-container{
+    display: block;
+    padding: 50px;
+    text-indent: none;
+    border: solid 1px rgb(188, 188, 255);
+    border-radius: 30px;
+    background-color: rgb(188, 188, 255);
+    margin: 30px;
+    width:50%;
+
+  }
+
+
+  @import url("https://cdn.syncfusion.com/ej2/material.css");
+
+  
+
+
+
+
+

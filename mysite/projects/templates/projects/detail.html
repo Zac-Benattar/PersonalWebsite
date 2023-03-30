@@ -1,0 +1,28 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Project Management App</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <h1>{{ project.name }}</h1>
+
+    <p>{{ project.description }}</p>
+
+    <p>Risk Score: {% firstof riskevaluation.success_chance "Not yet evaluated" %} ({% if riskevaluation %}{{ riskevaluation.date }}{% else %}{% now "M. j, Y, h:i a" %}{% endif %})</p>
+
+    <div>    
+        <a href="{% url 'projects:people' project.id %}">People</a>
+        <a href="{% url 'projects:recommendations' project.id %}">Recommendations</a>
+        <a href="{% url 'projects:tasks' project.id %}">Tasks</a>
+    </div>
+
+
+</body>
+
+</html>

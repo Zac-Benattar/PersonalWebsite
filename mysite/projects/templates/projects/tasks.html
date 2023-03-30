@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Project Management App</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <h1>{{ project.name }}</h1>
+
+    <h2>Tasks</h2>
+
+    <div>
+        {% if tasks %}
+        <h3>{{ tasks_count }} Tasks</h3>
+        <ul>
+            {% for task in tasks %}
+            <li>
+                <h3>Name: {{ task.name }}</h3>
+                <p>Description: {{ task.description }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> No tasks are available.</p>
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Project Management App</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+
+    <h1>{{ project.name }}</h1>
+
+    <h2>People</h2>
+    
+    <div>
+        {% if members %}
+        <ul>
+            {% for member in members %}
+            <li><a href="{% url 'users:detail' member.user.id %}">{{ member.user.username }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> No members are available.</p>
+        {% endif %}
+    </div>
+
+
+</body>
+
+</html>
