@@ -6,7 +6,7 @@
 </html>
 
 <head>
-    <title>Project Management App Admin</title>
+    <title>Website Admin</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
 </head>
 
@@ -14,7 +14,7 @@
     {% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
     {% block branding %}
-    <h1 id="site-name"><a href="{% url 'admin:index' %}">Software Project Tracker Administration</a></h1>
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">Website Administration</a></h1>
     {% endblock %}
 
     {% block nav-global %}{% endblock %}
