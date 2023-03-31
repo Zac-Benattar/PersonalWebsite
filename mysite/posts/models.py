@@ -71,7 +71,7 @@ class AlbumPost(Post):
 
 class VideoPost(Post):
     title = models.CharField(max_length=300, unique=True)
-    video_path = models.ManyToManyField('Image')
+    video_path = models.ManyToManyField('Video')
 
 
 class Image(models.Model):
