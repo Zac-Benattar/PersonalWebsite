@@ -1,6 +1,6 @@
 from django.shortcuts import get_list_or_404, get_object_or_404
 from rest_framework import permissions, viewsets
-from projects.models import *
+from posts.models import *
 from .serializers import *
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.exceptions import NotFound

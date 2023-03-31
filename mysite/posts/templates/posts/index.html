@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>Zac Benattar Blog</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+
+    <h1>Posts</h1>
+
+    <div>
+        {% if posts %}
+        <ul>
+            {% for post in posts %}
+            <li><a href="{% url 'posts:detail' post.id %}">{{ post.name }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p> No posts are available.</p>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

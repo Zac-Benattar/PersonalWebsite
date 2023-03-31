@@ -5,10 +5,10 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 
 router = routers.DefaultRouter()
-router.register(r'projects', PostsViewSet, basename='posts')
+router.register(r'posts', PostsViewSet, basename='posts')
 router.register(r'users', UserViewSet)
 
-# user routers , api call : /api/users/myaccount
+# user routers, api call : /api/users/myaccount
 userAccount_router = routers.NestedDefaultRouter( router, r'users', lookup = 'user')
 userAccount_router.register( r'myaccount', MyAccountViewSet, basename='user-myAccount')
 

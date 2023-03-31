@@ -21,7 +21,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
-    'projects.apps.ProjectsConfig',
+    'posts.apps.PostsConfig',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
@@ -52,7 +52,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'frontend/web-app/build'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -78,7 +78,7 @@ DATABASES = {
 }
 
 # Our custom user requires auth setup
-AUTH_USER_MODEL = 'projects.CustomUser'
+AUTH_USER_MODEL = 'posts.CustomUser'
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -115,7 +115,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [BASE_DIR / 'static', BASE_DIR / 'frontend/web-app/build/static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

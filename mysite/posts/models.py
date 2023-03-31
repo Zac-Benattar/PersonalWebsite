@@ -22,10 +22,15 @@ def get_in_week_datetime():
 
 class Post(models.Model):
     name = models.CharField(max_length=100, unique=True)
-    tags = models.ManyToManyField('Tag')
+    tags = models.ManyToManyField('Tag', blank=True)
     description = models.TextField()
-    comments = models.ManyToManyField('Comment')
+    comments = models.ManyToManyField('Comment', blank=True)
     poster = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
+    posted_date = models.DateTimeField(default=get_today_datetime)
+    modified_date = models.DateTimeField(default=get_today_datetime)
+    
+    class Meta:
+        abstract = True
 
     def __str__(self):
         '''Gets string representation of the post object
@@ -117,6 +122,8 @@ class Tag(models.Model):
 class Comment(models.Model):
     user = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     body = models.TextField()
+    posted_date = models.DateTimeField(default=get_today_datetime)
+    modified_date = models.DateTimeField(default=get_today_datetime)
 
     def __str__(self):
         '''Gets string representation of the comment object

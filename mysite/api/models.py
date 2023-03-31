@@ -1,3 +1,3 @@
 from django.db import models
-from projects import models
+from posts import models
 # Create your models here.

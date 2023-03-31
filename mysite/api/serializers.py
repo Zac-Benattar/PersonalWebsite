@@ -1,6 +1,6 @@
 # converts python model objects to json inkedId
-from rest_framework.serializers import ModelSerializer, IntegerField, CharField
-from projects.models import *
+from rest_framework.serializers import ModelSerializer
+from posts.models import *
 
 
 class UserSerializer(ModelSerializer):
