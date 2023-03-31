@@ -16,7 +16,7 @@ class IndexView(View):
             HttpResponse: index.html with context: posts
         """
         # This doesnt work when theres no post objects in the db
-        posts = Post.objects.all()
+        posts = Post.objects.filter()
         if posts.count > 0:
             posts = posts.order_by('-posted_date')
         context = {'posts':posts}

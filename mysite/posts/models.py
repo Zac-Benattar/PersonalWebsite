@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 
 
 def get_today_datetime():
@@ -19,6 +21,22 @@ def get_in_day_datetime():
 def get_in_week_datetime():
     return timezone.now() + timezone.timedelta(days=7)
 
+# Is this really what I want to do?
+def create_post(sender, instance, created, **kwargs):
+    """
+    Post save handler to create/update post instances when
+    BlogPost, AlbumPost, VideoPost are created/updated
+    """
+    content_type = ContentType.objects.get_for_model(instance)
+    try:
+        post= Post.objects.get(content_type=content_type,
+                             object_id=instance.id)
+    except Post.DoesNotExist:
+        post = Post(content_type=content_type, object_id=instance.id)
+    post.created = instance.created
+    post.series = instance.series
+    post.save()
+
 
 class Post(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -29,17 +47,25 @@ class Post(models.Model):
     posted_date = models.DateTimeField(default=get_today_datetime)
     modified_date = models.DateTimeField(default=get_today_datetime)
     
+    # Stuff to make Content Types work
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    created = models.DateTimeField()
+    
     class Meta:
         abstract = True
+        ordering = ['-created']
 
     def __str__(self):
         '''Gets string representation of the post object
-        Format: <post.name>
+        Format: <post.content_object> - <post.created.date>
 
         Returns:
-            str string representation of the post
+            str string representation of the image
         '''
-        return self.name
+        return "{0} - {1}".format(self.content_object.series,
+                                  self.created.date())
 
 
 class BlogPost(Post):
