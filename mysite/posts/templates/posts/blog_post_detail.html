@@ -1,0 +1,18 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+</html>
+
+<head>
+    <title>{{ blogpost.title }}</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
+
+<body>
+    <h1>{{ blogpost.title }}</h1>
+
+    <p>{{ blogpost.description }}</p>
+</body>
+
+</html>

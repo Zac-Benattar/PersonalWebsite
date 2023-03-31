@@ -5,14 +5,14 @@
 </html>
 
 <head>
-    <title>Zac Benattar Blog</title>
+    <title>{{ albumpost.title }}</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
 </head>
 
 <body>
-    <h1>{{ post.name }}</h1>
+    <h1>{{ albumpost.title }}</h1>
 
-    <p>{{ post.description }}</p>
+    <p>{{ albumpost.description }}</p>
 </body>
 
 </html>

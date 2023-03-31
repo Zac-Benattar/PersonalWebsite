@@ -21,22 +21,6 @@ def get_in_day_datetime():
 def get_in_week_datetime():
     return timezone.now() + timezone.timedelta(days=7)
 
-# Is this really what I want to do?
-def create_post(sender, instance, created, **kwargs):
-    """
-    Post save handler to create/update post instances when
-    BlogPost, AlbumPost, VideoPost are created/updated
-    """
-    content_type = ContentType.objects.get_for_model(instance)
-    try:
-        post= Post.objects.get(content_type=content_type,
-                             object_id=instance.id)
-    except Post.DoesNotExist:
-        post = Post(content_type=content_type, object_id=instance.id)
-    post.created = instance.created
-    post.series = instance.series
-    post.save()
-
 
 class Post(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -46,32 +30,38 @@ class Post(models.Model):
     poster = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     posted_date = models.DateTimeField(default=get_today_datetime)
     modified_date = models.DateTimeField(default=get_today_datetime)
-    
-    # Stuff to make Content Types work
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
-    created = models.DateTimeField()
-    
+    BLOG = 'B'
+    ALBUM = 'A'
+    VIDEO = 'V'
+    post_type_choices = [
+        (BLOG, 'Blog'),
+        (ALBUM, 'Album'),
+        (VIDEO, 'Video'),
+    ]
+    post_type = models.CharField(
+        max_length=2,
+        choices=post_type_choices,
+        default=BLOG,
+    )
+
     class Meta:
         abstract = True
-        ordering = ['-created']
+        ordering = ['-posted_date']
 
     def __str__(self):
         '''Gets string representation of the post object
-        Format: <post.content_object> - <post.created.date>
+        Format: <post.name>
 
         Returns:
-            str string representation of the image
+            str string representation of the post
         '''
-        return "{0} - {1}".format(self.content_object.series,
-                                  self.created.date())
+        return self.name
 
 
 class BlogPost(Post):
     title = models.CharField(max_length=300, unique=True)
     body = models.TextField()
-    image_paths = models.ManyToManyField('Image')
+    image_paths = models.ManyToManyField('Image', blank=True)
 
 
 class AlbumPost(Post):
@@ -88,6 +78,8 @@ class Image(models.Model):
     # This is a charfield as images should be directly uploaded to the server rather than handled by the measly server running this webapp
     # Simply saving the url of the image to be accessed later
     file_path = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    tags = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         '''Gets string representation of the image object
@@ -103,6 +95,8 @@ class Video(models.Model):
     # This is a charfield as videos should be directly uploaded to the server rather than handled by the measly server running this webapp
     # Simply saving the url of the video to be accessed later
     file_path = models.CharField(max_length=100, unique=True)
+    description = models.TextField(blank=True)
+    tags = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         '''Gets string representation of the video object

@@ -9,7 +9,7 @@ from .models import *
 
 # from static.Risk_Assessment.projectevaluator import ProjectEvaluator
 
-class IndexView(View):
+class PostIndexView(View):
     def get(self, request):
         """Returns HttpResponse containing index page listing all posts in order of posting
 
@@ -17,27 +17,57 @@ class IndexView(View):
             HttpResponse: index.html with context: posts
         """
         # This doesnt work when theres no post objects in the db
-        queryset = list(chain(BlogPost.objects.filter(), AlbumPost.objects.filter(), VideoPost.objects.filter()))
-        if posts.count > 0:
-            posts = posts.order_by('-posted_date')
+        posts = list(chain(BlogPost.objects.filter(), AlbumPost.objects.filter(), VideoPost.objects.filter()))
         context = {'posts':posts}
         return render(request, 'posts/index.html', context)
 
 
-class DetailView(View):    
+class BlogPostDetailView(View):    
     def get(self, request, pk):
         """Returns HttpResponse containing detail page listing:
-        The relevant post's details
-        The relevant post's comments
+        The relevant blog post's details
+        The relevant blog post's comments
 
         Returns:
-            HttpResponse: detail.html with context: post, comments
+            HttpResponse: blog_post_detail.html with context: post, comments
         """
         context = {
-            'post' : get_object_or_404(Post, pk=self.kwargs['pk']),
-            'comments' : Comment.objects.filter(post=get_object_or_404(Post, pk=self.kwargs['pk'])).order_by('-posted_date').last()
+            'blogpost' : get_object_or_404(BlogPost, pk=self.kwargs['pk']),
+            'comments' : get_object_or_404(BlogPost, pk=self.kwargs['pk']).comments.order_by('-posted_date')
         }
-        return render(request, 'posts/detail.html', context)
+        return render(request, 'posts/blog_post_detail.html', context)
+
+
+class AlbumPostDetailView(View):    
+    def get(self, request, pk):
+        """Returns HttpResponse containing detail page listing:
+        The relevant album post's details
+        The relevant album post's comments
+
+        Returns:
+            HttpResponse: album_post_detail.html with context: post, comments
+        """
+        context = {
+            'albumpost' : get_object_or_404(AlbumPost, pk=self.kwargs['pk']),
+            'comments' : get_object_or_404(AlbumPost, pk=self.kwargs['pk']).comments.order_by('-posted_date')
+        }
+        return render(request, 'posts/album_post_detail.html', context)
+
+
+class VideoPostDetailView(View):    
+    def get(self, request, pk):
+        """Returns HttpResponse containing detail page listing:
+        The relevant video post's details
+        The relevant video post's comments
+
+        Returns:
+            HttpResponse: video_post_detail.html with context: post, comments
+        """
+        context = {
+            'videopost' : get_object_or_404(VideoPost, pk=self.kwargs['pk']),
+            'comments' : get_object_or_404(VideoPost, pk=self.kwargs['pk']).comments.order_by('-posted_date'),
+        }
+        return render(request, 'posts/video_post_detail.html', context)
 
 
 class AccountView(View):

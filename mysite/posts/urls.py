@@ -4,8 +4,10 @@ from . import views
 
 app_name = 'posts'
 urlpatterns = [
-    path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path('', views.PostIndexView.as_view(), name='index'),
+    path('blogpost/<int:pk>/', views.BlogPostDetailView.as_view(), name='blogdetail'),
+    path('albumpost/<int:pk>/', views.AlbumPostDetailView.as_view(), name='albumdetail'),
+    path('videopost/<int:pk>/', views.VideoPostDetailView.as_view(), name='videodetail'),
 ]
 
 

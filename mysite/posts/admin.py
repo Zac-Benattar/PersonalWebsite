@@ -26,6 +26,18 @@ class TagAdmin(admin.ModelAdmin):
     search_fields = ['name',]
 
 
+class ImageAdmin(admin.ModelAdmin):
+    list_display = ('file_path',)
+    list_filter = ['file_path']
+    search_fields = ['file_path','description','tags']
+
+
+class VideoAdmin(admin.ModelAdmin):
+    list_display = ('file_path',)
+    list_filter = ['file_path']
+    search_fields = ['file_path','description','tags']
+
+
 class CustomUserAdmin(admin.ModelAdmin):
     list_display = ('username', 'email')
     list_filter = ['username', 'first_name', 'last_name']
@@ -36,4 +48,6 @@ admin.site.register(BlogPost, BlogPostAdmin)
 admin.site.register(AlbumPost, AlbumPostAdmin)
 admin.site.register(VideoPost, VideoPostAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(Image, ImageAdmin)
+admin.site.register(Video, VideoAdmin)
 admin.site.register(CustomUser, CustomUserAdmin)
