@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, get_list_or_404, render
 from django.urls import reverse
 from django.views import View
 from django.utils import timezone
+from itertools import chain
 
 from .models import *
 
@@ -16,7 +17,7 @@ class IndexView(View):
             HttpResponse: index.html with context: posts
         """
         # This doesnt work when theres no post objects in the db
-        posts = Post.objects.filter()
+        queryset = list(chain(BlogPost.objects.filter(), AlbumPost.objects.filter(), VideoPost.objects.filter()))
         if posts.count > 0:
             posts = posts.order_by('-posted_date')
         context = {'posts':posts}
