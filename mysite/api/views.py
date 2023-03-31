@@ -10,19 +10,20 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-import sys #Import system file to add extra imports from outside file
-import pathlib #Import the libary to modify paths
+import sys  # Import system file to add extra imports from outside file
+import pathlib  # Import the libary to modify paths
 
 # Keeping in case need to add subfolder to path
-# Add the Risk_Assessment folder to the path
+# Add the stuff folder to the path
 # Search path needs to be changed to find the files, later reverted
 # originalPath = sys.path
-# folderpath = str(pathlib.Path(__file__).parent.parent.joinpath('static\Risk_Assessment').resolve())
+# folderpath = str(pathlib.Path(__file__).parent.parent.joinpath('static\stuff').resolve())
 # sys.path.append(folderpath)
 
 # Revert the import path to the original path
 # Might not be needed
 # sys.path = originalPath
+
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
@@ -37,34 +38,18 @@ class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
 
 
-# read permissions for authenticated users
-class IsOwnerOrCoWorker(permissions.BasePermission):
-    message = 'Editing this field is restricted to the owners only'
-
-    def has_object_permission(self, request, view, obj):
-        # Only allow read permissions to members of the project
-        if request.method in permissions.SAFE_METHODS:
-            return True
-        # Only allow write permissions to members involved in the task
-        if obj.members.filter(user_profile=request.user.id).exists():
-            return True
-
-        return False
-
-
 class PostReadAndWritePermission(permissions.BasePermission):
     message = 'Editing posts is restricted to the poster only'
 
+    # I dont think this does what it should do
     def has_object_permission(self, request, view, obj):
-        # Only allow read permissions for members of the project
+        # Only allow read permissions for viewers
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        # Only allow write permissions to project manager
+        # Only allow write permissions to poster
         user = get_object_or_404(CustomUser, username=request.user)
-        query_set = Member.objects.filter(
-            user=user, project=obj.id, project_manager=True)
-        if query_set.exists():
+        if user == Post.objects.get(id=obj.id).poster:
             return True
 
         return False
@@ -80,7 +65,7 @@ class PostsViewSet(viewsets.ModelViewSet):
         Returns:
             list(post)
         '''
-        
+
         queryset = Post.objects.all()
         return queryset
 

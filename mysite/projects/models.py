@@ -25,6 +25,7 @@ class Post(models.Model):
     tags = models.ManyToManyField('Tag')
     description = models.TextField()
     comments = models.ManyToManyField('Comment')
+    poster = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
 
     def __str__(self):
         '''Gets string representation of the post object
