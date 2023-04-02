@@ -13,25 +13,23 @@
   <body>
     <h1>{{ videopost.title }}</h1>
 
-    <p>{{ videopost.description }}</p>
-
     <div>
       <!-- Selection statements to determine hosting of the video, whether it be from a file server or youtube -->
-      {% if videopost.video_path.hosting_method == 'Y' %}
+      {% if videopost.video.hosting_method == 'Y' %}
       <iframe
         width="560"
         height="315"
-        src="https://www.youtube.com/embed/{{videopost.video_path.file_path}}"
+        src="https://www.youtube.com/embed/{{videopost.video.file_path}}"
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
 
-      {% elif videopost.video_path.hosting_method == 'S' %}
+      {% elif videopost.video.hosting_method == 'S' %}
       <iframe
         width="560"
         height="315"
-        src="{{videopost.video_path.file_path}}"
+        src="{{videopost.video.file_path}}"
         frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
@@ -40,10 +38,12 @@
       {% else %}
       <!-- This is probably insecure, possbily exposing file paths of the server -->
       <p>
-        Invalid video hosting method {{videopost.video_path.hosting_method}}
-        specified for {{videopost.video_path.file_path}}.
+        Invalid video hosting method {{videopost.video.hosting_method}}
+        specified for {{videopost.video.file_path}}.
       </p>
       {% endif %}
     </div>
+
+    <p>{{ videopost.description }}</p>
   </body>
 </html>

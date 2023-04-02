@@ -3,21 +3,21 @@ from .models import *
 
 
 class BlogPostAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    list_filter = ['name']
-    search_fields = ['name', 'description']
+    list_display = ('title',)
+    list_filter = ['title']
+    search_fields = ['title', 'description']
 
 
 class AlbumPostAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    list_filter = ['name']
-    search_fields = ['name', 'description']
+    list_display = ('title',)
+    list_filter = ['title']
+    search_fields = ['title', 'description']
 
 
 class VideoPostAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    list_filter = ['name']
-    search_fields = ['name', 'description']
+    list_display = ('title',)
+    list_filter = ['title']
+    search_fields = ['title', 'description']
 
 
 class TagAdmin(admin.ModelAdmin):

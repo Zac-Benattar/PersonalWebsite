@@ -20,15 +20,15 @@
       <ul>
         {% for post in posts %} {% if post.post_type == 'B' %}
         <li>
-          <a href="{% url 'posts:blogdetail' post.id %}">{{ post.name }}</a>
+          <a href="{% url 'posts:blogdetail' post.id %}">{{ post.title }}</a>
         </li>
         {% elif post.post_type == 'A' %}
         <li>
-          <a href="{% url 'posts:albumdetail' post.id %}">{{ post.name }}</a>
+          <a href="{% url 'posts:albumdetail' post.id %}">{{ post.title }}</a>
         </li>
         {% elif post.post_type == 'V' %}
         <li>
-          <a href="{% url 'posts:videodetail' post.id %}">{{ post.name }}</a>
+          <a href="{% url 'posts:videodetail' post.id %}">{{ post.title }}</a>
         </li>
         {% endif %} {% endfor %}
       </ul>

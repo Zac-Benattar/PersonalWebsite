@@ -23,7 +23,7 @@ def get_in_week_datetime():
 
 
 class Post(models.Model):
-    name = models.CharField(max_length=100, unique=True)
+    title = models.CharField(max_length=300, unique=True)
     tags = models.ManyToManyField('Tag', blank=True)
     description = models.TextField()
     comments = models.ManyToManyField('Comment', blank=True)
@@ -50,28 +50,25 @@ class Post(models.Model):
 
     def __str__(self):
         '''Gets string representation of the post object
-        Format: <post.name>
+        Format: <post.title>
 
         Returns:
             str string representation of the post
         '''
-        return self.name
+        return self.title
 
 
 class BlogPost(Post):
-    title = models.CharField(max_length=300, unique=True)
     body = models.TextField()
     image_paths = models.ManyToManyField('Image', blank=True)
 
 
 class AlbumPost(Post):
-    title = models.CharField(max_length=300, unique=True)
     image_paths = models.ManyToManyField('Image')
 
 
 class VideoPost(Post):
-    title = models.CharField(max_length=300, unique=True)
-    video_path = models.ManyToManyField('Video')
+    video = models.ForeignKey('Video', on_delete=models.CASCADE)
 
 
 class Image(models.Model):
@@ -92,6 +89,8 @@ class Image(models.Model):
  
 
 class Video(models.Model):
+    # Need to improve the default so it is unique
+    title = models.CharField(max_length=300, unique=True, default='Untitled Video')
     # This is a charfield as videos should be directly uploaded to the server rather than handled by the measly server running this webapp
     # Simply saving the url of the video to be accessed later
     file_path = models.CharField(max_length=100, unique=True)
@@ -106,7 +105,7 @@ class Video(models.Model):
     hosting_method = models.CharField(
         max_length=1,
         choices=hosting_method_choices,
-        default=SERVER,
+        default=YOUTUBE,
     )
 
     def __str__(self):
