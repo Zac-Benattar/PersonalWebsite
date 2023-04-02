@@ -4,6 +4,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
+from ckeditor.fields import RichTextField
 
 
 def get_today_datetime():
@@ -59,7 +60,9 @@ class Post(models.Model):
 
 
 class BlogPost(Post):
-    body = models.TextField()
+    # Using a package for rich text fields, it outputs as HTML so use the safe filter in the template
+    # https://django-ckeditor.readthedocs.io/en/latest/
+    body = RichTextField()
     image_paths = models.ManyToManyField('Image', blank=True)
 
 
@@ -77,7 +80,7 @@ class Image(models.Model):
     file_path = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
-  
+
     def __str__(self):
         '''Gets string representation of the image object
         Format: <image.filePath>
@@ -86,11 +89,12 @@ class Image(models.Model):
             str string representation of the image
         '''
         return self.file_path
- 
+
 
 class Video(models.Model):
     # Need to improve the default so it is unique
-    title = models.CharField(max_length=300, unique=True, default='Untitled Video')
+    title = models.CharField(
+        max_length=300, unique=True, default='Untitled Video')
     # This is a charfield as videos should be directly uploaded to the server rather than handled by the measly server running this webapp
     # Simply saving the url of the video to be accessed later
     file_path = models.CharField(max_length=100, unique=True)
