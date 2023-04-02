@@ -1,37 +1,40 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-</html>
-
-<head>
+  <head>
     <title>Zac Benattar's Blog</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
-</head>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.png' %}"
+    />
+  </head>
 
-<body>
-    <link rel="stylesheet" href="{% static 'posts/style.css' %}">
+  <body>
+    <link rel="stylesheet" href="{% static 'posts/style.css' %}" />
 
     <h1>Posts</h1>
 
     <div>
-        {% if posts %}
-        <ul>
-            {% for post in posts %}
-                {% if post.post_type == 'B' %}
-                    <li><a href="{% url 'posts:blogdetail' post.id %}">{{ post.name }}</a></li>
-                {% elif post.post_type == 'V' %}
-                    <li><a href="{% url 'posts:videodetail' post.id %}">{{ post.name }}</a></li>
-                {% elif post.post_type == 'A' %}
-                    <li><a href="{% url 'posts:albumdetail' post.id %}">{{ post.name }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-        {% else %}
-        <p> No posts are available.</p>
-        {% endif %}
+      {% if posts %}
+      <ul>
+        {% for post in posts %} {% if post.post_type == 'B' %}
+        <li>
+          <a href="{% url 'posts:blogdetail' post.id %}">{{ post.name }}</a>
+        </li>
+        {% elif post.post_type == 'A' %}
+        <li>
+          <a href="{% url 'posts:albumdetail' post.id %}">{{ post.name }}</a>
+        </li>
+        {% elif post.post_type == 'V' %}
+        <li>
+          <a href="{% url 'posts:videodetail' post.id %}">{{ post.name }}</a>
+        </li>
+        {% endif %} {% endfor %}
+      </ul>
+      {% else %}
+      <p>No posts are available.</p>
+      {% endif %}
     </div>
-
-</body>
-
+  </body>
 </html>

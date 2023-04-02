@@ -39,7 +39,7 @@ class Post(models.Model):
         (VIDEO, 'Video'),
     ]
     post_type = models.CharField(
-        max_length=2,
+        max_length=1,
         choices=post_type_choices,
         default=BLOG,
     )
@@ -80,7 +80,7 @@ class Image(models.Model):
     file_path = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
-
+  
     def __str__(self):
         '''Gets string representation of the image object
         Format: <image.filePath>
@@ -89,7 +89,7 @@ class Image(models.Model):
             str string representation of the image
         '''
         return self.file_path
-
+ 
 
 class Video(models.Model):
     # This is a charfield as videos should be directly uploaded to the server rather than handled by the measly server running this webapp
@@ -97,6 +97,17 @@ class Video(models.Model):
     file_path = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
+    YOUTUBE = 'Y'
+    SERVER = 'S'
+    hosting_method_choices = [
+        (YOUTUBE, 'YouTube'),
+        (SERVER, 'Server'),
+    ]
+    hosting_method = models.CharField(
+        max_length=1,
+        choices=hosting_method_choices,
+        default=SERVER,
+    )
 
     def __str__(self):
         '''Gets string representation of the video object
