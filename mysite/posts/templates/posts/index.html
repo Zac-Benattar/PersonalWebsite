@@ -15,23 +15,23 @@
 
     <h1>Posts</h1>
 
-    <div>
+    <div class="posts">
       {% if posts %}
       <ul>
         {% for post in posts %} {% if post.post_type == 'B' %}
-        <div>
+        <div class="post-widget">
             <a href="{% url 'posts:blogdetail' post.id %}">{{ post.title }}</a>
             <p>{{ post.description }}</p>
         </div>
 
         {% elif post.post_type == 'A' %}
-        <div>
+        <div class="post-widget">
             <a href="{% url 'posts:albumdetail' post.id %}">{{ post.title }}</a>
             <p>{{ post.description }}</p>
         </div>
 
         {% elif post.post_type == 'V' %}
-        <div>
+        <div class="post-widget">
             <a href="{% url 'posts:videodetail' post.id %}">{{ post.title }}</a>
             <p>{{ post.description }}</p>
         </div>

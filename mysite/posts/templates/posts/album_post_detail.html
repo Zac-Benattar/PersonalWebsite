@@ -1,16 +1,27 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>{{ albumpost.title }}</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
-</head>
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="{% static 'favicon.png' %}"
+    />
+  </head>
 
-<body>
+  <body>
     <h1>{{ albumpost.title }}</h1>
 
-    <p>{{ albumpost.description }}</p>
-</body>
+    <!-- Make this work -->
+    <div class="album-container">
+      {% for image in albumpost.images.all %}
+      <img src="{{ image.file_path }}" />
+      {% endfor %}
+    </div>
 
+    <div class="description-container">
+      <p>{{ albumpost.description }}</p>
+    </div>
+  </body>
 </html>

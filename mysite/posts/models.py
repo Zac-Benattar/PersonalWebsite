@@ -63,11 +63,11 @@ class BlogPost(Post):
     # Using a package for rich text fields, it outputs as HTML so use the safe filter in the template
     # https://django-ckeditor.readthedocs.io/en/latest/
     body = RichTextField()
-    image_paths = models.ManyToManyField('Image', blank=True)
+    images = models.ManyToManyField('Image', blank=True)
 
 
 class AlbumPost(Post):
-    image_paths = models.ManyToManyField('Image')
+    images = models.ManyToManyField('Image', blank=False)
 
 
 class VideoPost(Post):

@@ -13,7 +13,7 @@
   <body>
     <h1>{{ videopost.title }}</h1>
 
-    <div>
+    <div class="video-container"></div>
       <!-- Selection statements to determine hosting of the video, whether it be from a file server or youtube -->
       {% if videopost.video.hosting_method == 'Y' %}
       <iframe
