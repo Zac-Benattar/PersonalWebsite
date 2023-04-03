@@ -1,32 +1,16 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>{{ blogpost.title }}</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="{% static 'favicon.png' %}"
-    />
-    <link rel="stylesheet" href="{% static 'css/blog_post_detail.css' %}" />
-    <script src="{% static 'js/navbarScrollIndicator.js' %}"></script>
-  </head>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}" />
+</head>
 
-  <header>
-    <div class="header-proper">
-      <h1 class="logo">Zac Benattar's <span class="blue">Blog</span>
-      </h1>
-    </div>
-    <div class="scroll-line"></div>
-  </header>
+<body>
+    <h1>{{ blogpost.title }}</h1>
 
-  <div class="main">
-    <div class="content">
-      <body>
-        <h2 class="headline">{{ blogpost.title }}</h2>
+    {{ blogpost.body | safe | linebreaks }}
+</body>
 
-        {{ blogpost.body | safe | linebreaks }}
-      </body>
-    </div>
-  </div>
 </html>
