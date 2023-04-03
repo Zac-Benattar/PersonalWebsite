@@ -1,39 +1,22 @@
-@import "compass/css3";
-
-header{
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #ccc;
-}
-.header-proper{
-  width: 80%;
-  margin: 0 auto;
-  .logo{
-    font-family: "HelveticaNeueBlack", "HelveticaNeue-Black", "Helvetica Neue Black", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosBold', "Arial Black", sans-serif; 
-    font-weight:bold; 
-    .blue{
-      color: blue;
-    }
-    
+ /* Style the header: fixed position (always stay at the top) */
+ .header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: #f1f1f1;
   }
-}
-.scroll-line{
-  height: 2px;
-  margin-bottom: -2px;
-  background: blue;
-  width: 0%;
-}
-
-.content{
-  padding: 100px 0;
-  margin: 0 auto;
-  width: 80%;
-}
-.headline{
-  font-size: 60px;
-  line-height: 66px;
-}
+  
+  /* The progress container (grey background) */
+  .progress-container {
+    width: 100%;
+    height: 8px;
+    background: #ccc;
+  }
+  
+  /* The progress bar (scroll indicator) */
+  .progress-bar {
+    height: 8px;
+    background: #04AA6D;
+    width: 0%;
+  } 

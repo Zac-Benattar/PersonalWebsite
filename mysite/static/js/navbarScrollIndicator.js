@@ -1,9 +1,9 @@
-//capture scroll any percentage
-$(window).scroll(function () {
-  var wintop = $(window).scrollTop(),
-    docheight = $(document).height(),
-    winheight = $(window).height();
-  var scrolled = (wintop / (docheight - winheight)) * 100;
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
 
-  $(".scroll-line").css("width", scrolled + "%");
-});
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+} 
