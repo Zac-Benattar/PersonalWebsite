@@ -8,42 +8,55 @@
       type="image/png"
       href="{% static 'favicon.png' %}"
     />
+    <link rel="stylesheet" href="{% static 'css/video_post_detail.css' %}" />
   </head>
 
   <body>
-    <h1>{{ videopost.title }}</h1>
-
-    <div class="video-container"></div>
-      <!-- Selection statements to determine hosting of the video, whether it be from a file server or youtube -->
-      {% if videopost.video.hosting_method == 'Y' %}
-      <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/{{videopost.video.file_path}}"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-
-      {% elif videopost.video.hosting_method == 'S' %}
-      <iframe
-        width="560"
-        height="315"
-        src="{{videopost.video.file_path}}"
-        frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-
-      {% else %}
-      <!-- This is probably insecure, possbily exposing file paths of the server -->
-      <p>
-        Invalid video hosting method {{videopost.video.hosting_method}}
-        specified for {{videopost.video.title}}.
-      </p>
-      {% endif %}
+    <div class="header">
+      <div class="site-title-container">
+        <h1 class="logo">Zac Benattar's Blog</h1>
+      </div>
     </div>
 
-    <p>{{ videopost.description }}</p>
+    <div class="content">
+      <div class="video-title-container">
+        <h1 class="headline">{{ videopost.title }}</h1>
+      </div>
+
+      <div class="video-container">
+        {{ blogpost.body | safe | linebreaks }}
+        <!-- Selection statements to determine hosting of the video, whether it be from a file server or youtube -->
+        {% if videopost.video.hosting_method == 'Y' %}
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/{{videopost.video.file_path}}"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+
+        {% elif videopost.video.hosting_method == 'S' %}
+        <iframe
+          width="560"
+          height="315"
+          src="{{videopost.video.file_path}}"
+          frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+
+        {% else %}
+        <!-- This is probably insecure, possbily exposing file paths of the server -->
+        <p>
+          Invalid video hosting method {{videopost.video.hosting_method}}
+          specified for {{videopost.video.title}}.
+        </p>
+        {% endif %}
+      </div>
+      <div class="video-description-container">
+        <p>{{ videopost.description }}</p>
+      </div>
+    </div>
   </body>
 </html>

@@ -14,7 +14,7 @@
 
   <body>
     <div class="header">
-      <div class="title-container">
+      <div class="site-title-container">
         <h1 class="logo">Zac Benattar's Blog</h1>
       </div>
 
@@ -24,11 +24,11 @@
     </div>
 
     <div class="content">
-      <div class="title-section">
+      <div class="blog-title-section">
         <h1 class="headline">{{ blogpost.title }}</h1>
       </div>
 
-      <div class="text-body">{{ blogpost.body | safe | linebreaks }}</div>
+      <div class="blogpost-text-body">{{ blogpost.body | safe | linebreaks }}</div>
     </div>
   </body>
 </html>
