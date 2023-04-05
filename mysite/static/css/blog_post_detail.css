@@ -7,7 +7,7 @@ body {
 }
 
 p {
-    max-width: 75ch;
+  max-width: 75ch;
 }
 
 /* Style the header: fixed position (always stay at the top) */

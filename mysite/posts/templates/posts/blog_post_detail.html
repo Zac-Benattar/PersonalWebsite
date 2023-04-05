@@ -8,11 +8,11 @@
       type="image/png"
       href="{% static 'favicon.png' %}"
     />
-    <link rel="stylesheet" href="{% static 'css/blog_post_detail.css' %}" />
-    <script src="{% static 'js/navbarScrollIndicator.js' %}"></script>
   </head>
 
   <body>
+    <link rel="stylesheet" href="{% static 'css/blog_post_detail.css' %}" />
+    <script src="{% static 'js/navbarScrollIndicator.js' %}"></script>
     <div class="header">
       <div class="site-title-container">
         <h1 class="logo">Zac Benattar's Blog</h1>
@@ -28,7 +28,9 @@
         <h1 class="headline">{{ blogpost.title }}</h1>
       </div>
 
-      <div class="blogpost-text-body">{{ blogpost.body | safe | linebreaks }}</div>
+      <div class="blogpost-text-body">
+        {{ blogpost.body | safe | linebreaks }}
+      </div>
     </div>
   </body>
 </html>

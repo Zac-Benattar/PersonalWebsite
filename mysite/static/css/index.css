@@ -1,0 +1,12 @@
+.post-container {
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.post-description {
+    font-size: 16px;
+    max-width: 75ch;
+}
