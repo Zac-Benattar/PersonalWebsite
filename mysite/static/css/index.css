@@ -13,3 +13,18 @@
     font-size: 16px;
     max-width: 75ch;
 }
+
+.post-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-top: 1px;
+}
+
+.post-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-top: 1px;
+}

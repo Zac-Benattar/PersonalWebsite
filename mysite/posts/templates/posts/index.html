@@ -19,7 +19,7 @@
       <ul>
         {% for post in posts %} {% if post.get_post_type == 'Blog' %}
         <div class="post-container">
-          <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+          <a class="post-title" href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
             {{ post.description|truncatechars:512 }}
           </p>
@@ -27,7 +27,7 @@
 
         {% elif post.get_post_type == 'Album' %}
         <div class="post-container">
-          <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+          <a class="post-title" href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
             {{ post.description|truncatechars:512 }}
           </p>
@@ -35,7 +35,7 @@
 
         {% elif post.get_post_type == 'Video' %}
         <div class="post-container">
-          <a href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
+          <a class="post-title" href="{% url 'posts:detail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
             {{ post.description|truncatechars:512 }}
           </p>
