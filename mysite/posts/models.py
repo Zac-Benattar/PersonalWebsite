@@ -76,6 +76,17 @@ class Image(models.Model):
     file_path = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
+    STATIC = 'C'
+    SERVER = 'S'
+    hosting_method_choices = [
+        (STATIC, 'Static'),
+        (SERVER, 'Server'),
+    ]
+    hosting_method = models.CharField(
+        max_length=1,
+        choices=hosting_method_choices,
+        default=STATIC,
+    )
 
     def __str__(self):
         '''Gets string representation of the image object
@@ -85,6 +96,17 @@ class Image(models.Model):
             str string representation of the image
         '''
         return self.file_path
+
+    def get_host_type(self):
+        '''Gets the type of host the image is on
+
+        Returns:
+            str type of host the image is on
+        '''
+        if self.hosting_method == 'C':
+            return 'Static'
+        else:
+            return 'Server'
 
 
 class Video(models.Model):
@@ -116,6 +138,17 @@ class Video(models.Model):
             str string representation of the video
         '''
         return self.file_path
+    
+    def get_host_type(self):
+        '''Gets the type of host the video is on
+
+        Returns:
+            str type of host the video is on
+        '''
+        if self.hosting_method == 'Y':
+            return 'YouTube'
+        else:
+            return 'Server'
 
 # Tag represents a classification tag for content
 
