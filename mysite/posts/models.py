@@ -51,21 +51,21 @@ class BlogPost(Post):
     # https://django-ckeditor.readthedocs.io/en/latest/
     body = RichTextField()
     images = models.ManyToManyField('Image', blank=True)
-    
+
     def get_post_type(self):
         return 'Blog'
 
 
 class AlbumPost(Post):
     images = models.ManyToManyField('Image', blank=False)
-    
+
     def get_post_type(self):
         return 'Album'
 
 
 class VideoPost(Post):
     video = models.ForeignKey('Video', on_delete=models.CASCADE)
-    
+
     def get_post_type(self):
         return 'Video'
 
