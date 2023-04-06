@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from ckeditor.fields import RichTextField
+from polymorphic.models import PolymorphicModel
 
 
 def get_today_datetime():
@@ -23,7 +24,7 @@ def get_in_week_datetime():
     return timezone.now() + timezone.timedelta(days=7)
 
 
-class Post(models.Model):
+class Post(PolymorphicModel):
     title = models.CharField(max_length=300, unique=True)
     tags = models.ManyToManyField('Tag', blank=True)
     description = models.TextField()
@@ -31,22 +32,8 @@ class Post(models.Model):
     poster = models.ForeignKey('CustomUser', on_delete=models.CASCADE)
     posted_date = models.DateTimeField(default=get_today_datetime)
     modified_date = models.DateTimeField(default=get_today_datetime)
-    BLOG = 'B'
-    ALBUM = 'A'
-    VIDEO = 'V'
-    post_type_choices = [
-        (BLOG, 'Blog'),
-        (ALBUM, 'Album'),
-        (VIDEO, 'Video'),
-    ]
-    post_type = models.CharField(
-        max_length=1,
-        choices=post_type_choices,
-        default=BLOG,
-    )
 
     class Meta:
-        abstract = True
         ordering = ['-posted_date']
 
     def __str__(self):
@@ -64,14 +51,23 @@ class BlogPost(Post):
     # https://django-ckeditor.readthedocs.io/en/latest/
     body = RichTextField()
     images = models.ManyToManyField('Image', blank=True)
+    
+    def get_post_type(self):
+        return 'Blog'
 
 
 class AlbumPost(Post):
     images = models.ManyToManyField('Image', blank=False)
+    
+    def get_post_type(self):
+        return 'Album'
 
 
 class VideoPost(Post):
     video = models.ForeignKey('Video', on_delete=models.CASCADE)
+    
+    def get_post_type(self):
+        return 'Video'
 
 
 class Image(models.Model):

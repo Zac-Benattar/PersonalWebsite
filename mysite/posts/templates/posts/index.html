@@ -18,7 +18,7 @@
     <div class="posts">
       {% if posts %}
       <ul>
-        {% for post in posts %} {% if post.post_type == 'B' %}
+        {% for post in posts %} {% if post.get_post_type == 'Blog' %}
         <div class="post-container">
           <a href="{% url 'posts:blogdetail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
@@ -26,7 +26,7 @@
           </p>
         </div>
 
-        {% elif post.post_type == 'A' %}
+        {% elif post.get_post_type == 'Album' %}
         <div class="post-container">
           <a href="{% url 'posts:albumdetail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
@@ -34,14 +34,13 @@
           </p>
         </div>
 
-        {% elif post.post_type == 'V' %}
+        {% elif post.get_post_type == 'Video' %}
         <div class="post-container">
           <a href="{% url 'posts:videodetail' post.id %}">{{ post.title }}</a>
           <p class="post-description">
             {{ post.description|truncatechars:512 }}
           </p>
         </div>
-
         {% endif %} {% endfor %}
       </ul>
       {% else %}
