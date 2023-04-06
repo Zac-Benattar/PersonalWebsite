@@ -1,13 +1,14 @@
 from django.urls import path
-
+from django.shortcuts import get_object_or_404
 from . import views
+from .models import Post
+import re
+
 
 app_name = 'posts'
 urlpatterns = [
     path('', views.PostIndexView.as_view(), name='index'),
-    path('blogpost/<int:pk>/', views.BlogPostDetailView.as_view(), name='blogdetail'),
-    path('albumpost/<int:pk>/', views.AlbumPostDetailView.as_view(), name='albumdetail'),
-    path('videopost/<int:pk>/', views.VideoPostDetailView.as_view(), name='videodetail'),
+    path('posts/<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('account/', views.AccountView.as_view(), name='account'),
 ]
-
-
