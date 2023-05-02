@@ -29,23 +29,3 @@ Dependencies:
 		pip install django-cors-headers
 
 		pip install djangorestframework-simplejwt
-
-	Node/React/npm:
-
-		npm install react
-		
-		npm install react-google-charts
-
-		npm install react-calendar
-
-		npm install jwt-decode
-		
-		npm install react-icons
-
-		npm install styled-components
-
-		npm install react-bootstrap
-
-		npm install react-scripts
-
-		npm install react-modal
