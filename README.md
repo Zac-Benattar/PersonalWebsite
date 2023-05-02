@@ -1,18 +1,12 @@
-# SoftwareProjectTracker
+# PersonalWebsite
 
 Project is not containerised or particularly nicely deployable.
 
 There are many dependencies.
 
-The system is writen in python and javascript.
-
-Two command prompts must be used.
-
-To run the Django API server and the React application run the following in separate terminals:
+To run the Django API server run the following:
 
 SoftwareProjectTracker\mysite python manage.py runserver
-
-SoftwareProjectTracker\mysite\frontend\web-app npm start
 
 Dependencies:
 
