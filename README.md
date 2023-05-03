@@ -4,9 +4,9 @@ Project is not containerised or particularly nicely deployable.
 
 There are many dependencies.
 
-To run the Django API server run the following:
+To run the Django server run the following:
 
-SoftwareProjectTracker\mysite python manage.py runserver
+PersonalWebsite\mysite python manage.py runserver
 
 Dependencies:
 
@@ -15,8 +15,6 @@ Dependencies:
 		pip install Django==4.1.7
 
 		pip install "django-phonenumber-field[phonenumbers]"
-		
-		pip install -U scikit-learn
 
 		pip install djangorestframework
 
